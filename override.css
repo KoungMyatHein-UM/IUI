@@ -1,0 +1,22 @@
+/* override.css */
+body, * {
+    font-family: 'Roboto', sans-serif; /* Apply Roboto to the entire page */
+}
+
+/* Apply font-family to form elements as well */
+select, option, input, button {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Further specify font weights if needed */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700; /* Bold headings */
+}
+
+p, li, span, a, button, input, select, option {
+    font-weight: 400; /* Normal weight for body text */
+}
+
+strong {
+    font-weight: 600; /* Semi-bold for strong elements */
+}
