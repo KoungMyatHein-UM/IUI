@@ -2,22 +2,6 @@
   "products": [
     {
       "product_id": 1,
-      "name": "Classic Wooden Chair",
-      "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnlMh-VQdsdzvvOJQPDHiQEsFGI7_pM_doLg&s",
-      "filterable_properties": {
-        "category": "furniture",
-        "subcategory": "chairs",
-        "product_type": "chair",
-        "colors": ["brown", "black"],
-        "materials": ["wood", "leather"],
-        "brand": ["WoodMaster"],
-        "styles": ["rustic", "classic"],
-        "user_rating": 0.2,
-        "price": 129.99
-      }
-    },
-    {
-      "product_id": 2,
       "name": "Noise-Cancelling Headphones",
       "image_url": "https://m.media-amazon.com/images/I/51wdav0Z+2L._AC_UF1000,1000_QL80_.jpg",
       "filterable_properties": {
@@ -33,23 +17,7 @@
       }
     },
     {
-      "product_id": 3,
-      "name": "Modern Glass Coffee Table",
-      "image_url": "https://www.glassdiningtables.co.uk/cdn/shop/products/glass-pedestal-coffee-table_1000x750.jpg?v=1626282623",
-      "filterable_properties": {
-        "category": "furniture",
-        "subcategory": "tables",
-        "product_type": "coffee table",
-        "colors": ["clear", "silver"],
-        "materials": ["glass", "metal"],
-        "brand": ["GlassPlus"],
-        "styles": ["modern", "minimalist"],
-        "user_rating": 3.6,
-        "price": 249.99
-      }
-    },
-    {
-      "product_id": 4,
+      "product_id": 2,
       "name": "Wireless Bluetooth Earbuds",
       "image_url": "https://m.media-amazon.com/images/I/71FvvlyAMJL.jpg",
       "filterable_properties": {
@@ -65,23 +33,7 @@
       }
     },
     {
-      "product_id": 5,
-      "name": "Stainless Steel Kitchen Knife Set",
-      "image_url": "https://m.media-amazon.com/images/I/619XYSj0acL._AC_UF894,1000_QL80_.jpg",
-      "filterable_properties": {
-        "category": "kitchen",
-        "subcategory": "utensils",
-        "product_type": "knife set",
-        "colors": ["silver", "black"],
-        "materials": ["stainless steel", "plastic"],
-        "brand": ["ChefPro"],
-        "features": ["dishwasher safe", "ergonomic handle"],
-        "user_rating": 1.5,
-        "price": 79.99
-      }
-    },
-    {
-      "product_id": 6,
+      "product_id": 3,
       "name": "Smart LED Light Bulb",
       "image_url": "https://d1vfpdpyv21g5i.cloudfront.net/zunpulse/products_v5/bulb/D10000_1.jpg",
       "filterable_properties": {
@@ -97,23 +49,7 @@
       }
     },
     {
-      "product_id": 7,
-      "name": "Ergonomic Office Desk",
-      "image_url": "https://www.ikea.com/nl/en/images/products/arkelstorp-desk-black__0735967_pe740301_s5.jpg?f=s",
-      "filterable_properties": {
-        "category": "furniture",
-        "subcategory": "desks",
-        "product_type": "desk",
-        "colors": ["white", "black"],
-        "materials": ["wood", "metal"],
-        "brand": ["DeskPro"],
-        "styles": ["modern", "minimalist"],
-        "user_rating": 4.5,
-        "price": 299.99
-      }
-    },
-    {
-      "product_id": 8,
+      "product_id": 4,
       "name": "Smart LED TV 55\"",
       "image_url": "https://images.philips.com/is/image/philipsconsumer/eb0c3155c9104e05b906afbd011a24c0?wid=700&hei=700&$pnglarge$",
       "filterable_properties": {
@@ -129,7 +65,39 @@
       }
     },
     {
-      "product_id": 9,
+      "product_id": 5,
+      "name": "Gaming Laptop",
+      "image_url": "https://i5.walmartimages.com/seo/ASUS-ROG-Strix-15-6-R9-RTX-3060-Gaming-Laptop-FHD-AMD-Ryzen-9-5900HX-NVIDIA-GeForce-3060-16GB-RAM-1TB-SSD-Eclipse-Gray-Windows-10-Home-G513QM-WS96_8ca98551-8e80-431a-a0bf-2ae037b9e571.74a18e3919f93a362f7367ac2d157d84.jpeg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "laptops",
+        "product_type": "laptop",
+        "colors": ["black", "red"],
+        "materials": ["metal", "plastic"],
+        "brand": ["GamerPro"],
+        "features": ["16GB RAM", "SSD", "RGB Keyboard"],
+        "user_rating": 4.9,
+        "price": 1499.99
+      }
+    },
+    {
+      "product_id": 6,
+      "name": "Smartwatch with Heart Monitor",
+      "image_url": "https://www.lifeline.com/wp-content/uploads/2024/05/Smartwatch-Heartrate-550x550-1.png",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "wearables",
+        "product_type": "smartwatch",
+        "colors": ["black", "silver"],
+        "materials": ["metal", "glass"],
+        "brand": ["FitSense"],
+        "features": ["heart monitor", "GPS", "waterproof"],
+        "user_rating": 2.7,
+        "price": 129.99
+      }
+    },
+    {
+      "product_id": 7,
       "name": "Professional DSLR Camera",
       "image_url": "https://i1.adis.ws/i/canon/eos-5d-mark-iv-frt-w-ef-50mm_cbe4f7204ac24bf9bc8f79fb6cce4179?$block-media-1by1-dt-jpg$",
       "filterable_properties": {
@@ -145,19 +113,51 @@
       }
     },
     {
-      "product_id": 10,
-      "name": "Gaming Laptop",
-      "image_url": "https://i5.walmartimages.com/seo/ASUS-ROG-Strix-15-6-R9-RTX-3060-Gaming-Laptop-FHD-AMD-Ryzen-9-5900HX-NVIDIA-GeForce-3060-16GB-RAM-1TB-SSD-Eclipse-Gray-Windows-10-Home-G513QM-WS96_8ca98551-8e80-431a-a0bf-2ae037b9e571.74a18e3919f93a362f7367ac2d157d84.jpeg",
+      "product_id": 8,
+      "name": "Classic Wooden Chair",
+      "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnlMh-VQdsdzvvOJQPDHiQEsFGI7_pM_doLg&s",
       "filterable_properties": {
-        "category": "electronics",
-        "subcategory": "laptops",
-        "product_type": "laptop",
-        "colors": ["black", "red"],
-        "materials": ["metal", "plastic"],
-        "brand": ["GamerPro"],
-        "features": ["16GB RAM", "SSD", "RGB Keyboard"],
-        "user_rating": 4.9,
-        "price": 1499.99
+        "category": "furniture",
+        "subcategory": "chairs",
+        "product_type": "chair",
+        "colors": ["brown", "black"],
+        "materials": ["wood", "leather"],
+        "brand": ["WoodMaster"],
+        "styles": ["rustic", "classic"],
+        "user_rating": 0.2,
+        "price": 129.99
+      }
+    },
+    {
+      "product_id": 9,
+      "name": "Ergonomic Office Desk",
+      "image_url": "https://www.ikea.com/nl/en/images/products/arkelstorp-desk-black__0735967_pe740301_s5.jpg?f=s",
+      "filterable_properties": {
+        "category": "furniture",
+        "subcategory": "desks",
+        "product_type": "desk",
+        "colors": ["white", "black"],
+        "materials": ["wood", "metal"],
+        "brand": ["DeskPro"],
+        "styles": ["modern", "minimalist"],
+        "user_rating": 4.5,
+        "price": 299.99
+      }
+    },
+    {
+      "product_id": 10,
+      "name": "Stainless Steel Kitchen Knife Set",
+      "image_url": "https://m.media-amazon.com/images/I/619XYSj0acL._AC_UF894,1000_QL80_.jpg",
+      "filterable_properties": {
+        "category": "kitchen",
+        "subcategory": "utensils",
+        "product_type": "knife set",
+        "colors": ["silver", "black"],
+        "materials": ["stainless steel", "plastic"],
+        "brand": ["ChefPro"],
+        "features": ["dishwasher safe", "ergonomic handle"],
+        "user_rating": 1.5,
+        "price": 79.99
       }
     },
     {
@@ -242,18 +242,18 @@
     },
     {
       "product_id": 16,
-      "name": "Smartwatch with Heart Monitor",
-      "image_url": "https://www.lifeline.com/wp-content/uploads/2024/05/Smartwatch-Heartrate-550x550-1.png",
+      "name": "Modern Glass Coffee Table",
+      "image_url": "https://www.glassdiningtables.co.uk/cdn/shop/products/glass-pedestal-coffee-table_1000x750.jpg?v=1626282623",
       "filterable_properties": {
-        "category": "electronics",
-        "subcategory": "wearables",
-        "product_type": "smartwatch",
-        "colors": ["black", "silver"],
-        "materials": ["metal", "glass"],
-        "brand": ["FitSense"],
-        "features": ["heart monitor", "GPS", "waterproof"],
-        "user_rating": 2.7,
-        "price": 129.99
+        "category": "furniture",
+        "subcategory": "tables",
+        "product_type": "coffee table",
+        "colors": ["clear", "silver"],
+        "materials": ["glass", "metal"],
+        "brand": ["GlassPlus"],
+        "styles": ["modern", "minimalist"],
+        "user_rating": 3.6,
+        "price": 249.99
       }
     },
     {
