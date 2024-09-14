@@ -1,0 +1,37 @@
+{
+  "products": [
+    {
+      "product_id": 1,
+      "name": "Noise-Cancelling Headphones",
+      "image_url": "https://m.media-amazon.com/images/I/51wdav0Z+2L._AC_UF1000,1000_QL80_.jpg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "audio",
+        "product_type": "headphones",
+        "colors": ["black", "white"],
+        "materials": ["plastic", "synthetic leather"],
+        "brand": ["SoundTech"],
+        "features": ["noise cancelling", "wireless", "bluetooth"],
+        "user_rating": 1.8,
+        "price": 199.99
+      }
+    },
+    {
+      "product_id": 2,
+      "name": "Wireless Bluetooth Earbuds",
+      "image_url": "https://m.media-amazon.com/images/I/71FvvlyAMJL.jpg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "audio",
+        "product_type": "earbuds",
+        "colors": ["black", "blue"],
+        "materials": ["plastic", "rubber"],
+        "brand": ["EarPro"],
+        "features": ["bluetooth", "waterproof", "wireless"],
+        "user_rating": 2.5,
+        "price": 89.99
+      }
+    }
+  ]
+}
+
