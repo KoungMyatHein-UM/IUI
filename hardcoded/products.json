@@ -168,7 +168,7 @@
         "category": "kitchen",
         "subcategory": "cookware",
         "product_type": "cooking set",
-        "colors": ["blue", "black"],
+        "colors": ["beige", "grey"],
         "materials": ["ceramic", "stainless steel"],
         "brand": ["ChefWare"],
         "features": ["non-stick", "induction compatible"],
@@ -195,7 +195,7 @@
     {
       "product_id": 13,
       "name": "Portable Blender",
-      "image_url": "https://nutribullet.nl/cdn/shop/files/nutribulletTo-Go1000x1000Zwart_800x.jpg",
+      "image_url": "https://www.kianolife.com/cdn/shop/files/Blenderfilled_1100x.png?",
       "filterable_properties": {
         "category": "kitchen",
         "subcategory": "appliances",
