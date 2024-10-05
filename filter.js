@@ -1,42 +1,4 @@
 /**
- * Fetches the products from the products.json file and collates all filterable properties with adjusted counts.
- */
-async function fetchAndCollateFilterableProperties() {
-    try {
-        const response = await fetch('products.json'); // Fetch the products from the JSON file
-        const data = await response.json();
-        const products = data.products;
-
-        // Get bought and liked lists
-        const boughtList = getBoughtList();
-        const likedList = getLikedList();
-
-        // Find the bought and liked items
-        const boughtItems = products.filter(product => boughtList.includes(product.product_id));
-        const likedItems = products.filter(product => likedList.includes(product.product_id));
-
-        // Collate properties from bought and liked items
-        const boughtProperties = collateFilterablePropertiesWithCounts(boughtItems);
-        const likedProperties = collateFilterablePropertiesWithCounts(likedItems);
-
-        // Collate all filterable properties with counts from all products
-        const allProperties = collateFilterablePropertiesWithCounts(products);
-
-        // Apply weights to the counts
-        const boughtWeight = 2; // Higher weight for bought properties
-        const likedWeight = 1;  // Lower weight for liked properties
-
-        // Adjust counts in allProperties based on bought and liked properties
-        const adjustedProperties = adjustFilterablePropertiesCounts(allProperties, boughtProperties, likedProperties, boughtWeight, likedWeight);
-
-        console.log(adjustedProperties); // Display the adjusted properties with counts
-        return adjustedProperties;
-    } catch (error) {
-        console.error('Error fetching the products:', error);
-    }
-}
-
-/**
  * Adjusts the counts in allProperties based on bought and liked properties and their weights.
  * @param {Object} allProperties - The collated properties from all products.
  * @param {Object} boughtProperties - The collated properties from bought items.
@@ -329,7 +291,7 @@ function calculateFilterScores(allProperties, boughtProperties, likedProperties)
     const filterScores = [];
 
     // Define weighting factors
-    const boughtWeight = 2; // Higher influence
+    const boughtWeight = 20; // Higher influence
     const likedWeight = 1;  // Lower influence
 
     // Collect all unique filters across all categories
