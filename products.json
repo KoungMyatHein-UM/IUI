@@ -8,8 +8,8 @@
         "category": "furniture",
         "subcategory": "chairs",
         "product_type": "chair",
-        "colors": ["brown", "black"],
-        "materials": ["wood", "leather"],
+        "colors": ["brown"],
+        "materials": ["wood"],
         "brand": ["WoodMaster"],
         "styles": ["rustic", "classic"],
         "user_rating": 0.2,
@@ -22,7 +22,7 @@
       "image_url": "https://m.media-amazon.com/images/I/51wdav0Z+2L._AC_UF1000,1000_QL80_.jpg",
       "filterable_properties": {
         "category": "electronics",
-        "subcategory": "headphones",
+        "subcategory": "audio",
         "product_type": "headphones",
         "colors": ["black", "white"],
         "materials": ["plastic", "synthetic leather"],
@@ -54,7 +54,7 @@
       "image_url": "https://m.media-amazon.com/images/I/71FvvlyAMJL.jpg",
       "filterable_properties": {
         "category": "electronics",
-        "subcategory": "earbuds",
+        "subcategory": "audio",
         "product_type": "earbuds",
         "colors": ["black", "blue"],
         "materials": ["plastic", "rubber"],
@@ -123,7 +123,7 @@
         "colors": ["black"],
         "materials": ["plastic", "metal"],
         "brand": ["VisionTech"],
-        "features": ["4K", "smart TV", "HDR"],
+        "features": ["4K", "smart TV", "HDR", "LCD display"],
         "user_rating": 4.7,
         "price": 599.99
       }
@@ -155,7 +155,7 @@
         "colors": ["black", "red"],
         "materials": ["metal", "plastic"],
         "brand": ["GamerPro"],
-        "features": ["16GB RAM", "SSD", "RGB Keyboard"],
+        "features": ["16GB RAM", "SSD", "RGB Keyboard", "LCD display"],
         "user_rating": 4.9,
         "price": 1499.99
       }
@@ -251,7 +251,7 @@
         "colors": ["black", "silver"],
         "materials": ["metal", "glass"],
         "brand": ["FitSense"],
-        "features": ["heart monitor", "GPS", "waterproof"],
+        "features": ["heart rate monitor", "GPS", "waterproof", "LCD display"],
         "user_rating": 2.7,
         "price": 129.99
       }
@@ -278,14 +278,239 @@
       "image_url": "https://deixalles.org/tienda/wp-content/uploads/2022/02/PhotoRoom-20220207_124718.jpg",
       "filterable_properties": {
         "category": "electronics",
-        "subcategory": "audio equipment",
+        "subcategory": "audio",
         "product_type": "record player",
         "colors": ["brown", "black"],
         "materials": ["wood", "plastic"],
         "brand": ["RetroSound"],
-        "features": ["Bluetooth", "stereo speakers"],
+        "features": ["mono speaker"],
         "user_rating": 3.4,
         "price": 99.99
+      }
+    },
+    {
+      "product_id": 19,
+      "name": "Wireless Mouse",
+      "image_url": "https://cdn.shopify.com/s/files/1/0240/9337/products/GOMouse3-min_50cbaccc-84ee-4bcc-91ee-becc86469ee0.jpg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "accessories",
+        "product_type": "mouse",
+        "colors": ["black", "white"],
+        "materials": ["plastic"],
+        "brand": ["TechGear"],
+        "features": ["wireless", "bluetooth"],
+        "user_rating": 4.2,
+        "price": 49.99
+      }
+    },
+    {
+      "product_id": 20,
+      "name": "Stainless Steel Water Bottle",
+      "image_url": "https://m.media-amazon.com/images/I/71wFyZlg58L.jpg",
+      "filterable_properties": {
+        "category": "kitchen",
+        "subcategory": "utensils",
+        "product_type": "water bottle",
+        "colors": ["silver", "blue"],
+        "materials": ["stainless steel"],
+        "brand": ["HydroFlow"],
+        "features": ["insulated", "dishwasher safe"],
+        "user_rating": 4.5,
+        "price": 24.99
+      }
+    },
+    {
+      "product_id": 21,
+      "name": "Gaming Headset",
+      "image_url": "https://cf-images.dustin.eu/cdn-cgi/image/format=auto,quality=75,width=828,,fit=contain/image/d200001004294776/logitech-pro-x-wireless-gaming-headset-black-zwart.jpg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "audio",
+        "product_type": "gaming headset",
+        "colors": ["black", "red"],
+        "materials": ["plastic", "synthetic leather"],
+        "brand": ["GamerPro"],
+        "features": ["noise cancelling", "wireless", "RGB lighting"],
+        "user_rating": 4.3,
+        "price": 89.99
+      }
+    },
+    {
+      "product_id": 22,
+      "name": "Modern Floor Lamp",
+      "image_url": "https://i.etsystatic.com/13668284/r/il/f7d075/3372087671/il_570xN.3372087671_b25t.jpg",
+      "filterable_properties": {
+        "category": "furniture",
+        "subcategory": "lighting",
+        "product_type": "floor lamp",
+        "colors": ["black", "silver"],
+        "materials": ["metal", "plastic"],
+        "brand": ["BrightLife"],
+        "styles": ["modern", "minimalist"],
+        "user_rating": 4.0,
+        "price": 79.99
+      }
+    },
+    {
+      "product_id": 23,
+      "name": "Stainless Steel Toaster",
+      "image_url": "https://m.media-amazon.com/images/I/71F-IqyCk9L.jpg",
+      "filterable_properties": {
+        "category": "kitchen",
+        "subcategory": "appliances",
+        "product_type": "toaster",
+        "colors": ["silver", "black"],
+        "materials": ["stainless steel", "plastic"],
+        "brand": ["HeatWave"],
+        "features": ["auto shut-off", "quick toast"],
+        "user_rating": 3.9,
+        "price": 59.99
+      }
+    },
+    {
+      "product_id": 24,
+      "name": "Adjustable Standing Desk",
+      "image_url": "https://www.bravour.com/media/catalog/product/cache/cfae5f1ac859817bdbf9c94546aeb016/h/a/ha1_height_adjustable_desk_standing_position_low.jpg",
+      "filterable_properties": {
+        "category": "furniture",
+        "subcategory": "desks",
+        "product_type": "standing desk",
+        "colors": ["white", "black"],
+        "materials": ["wood", "metal"],
+        "brand": ["DeskPro"],
+        "styles": ["modern", "minimalist"],
+        "features": ["adjustable height"],
+        "user_rating": 4.6,
+        "price": 399.99
+      }
+    },
+    {
+      "product_id": 25,
+      "name": "Leather Office Chair",
+      "image_url": "https://www.ikea.com/nl/en/images/products/alefjall-office-chair-grann-golden-brown__0724709_pe734591_s5.jpg?f=s",
+      "filterable_properties": {
+        "category": "furniture",
+        "subcategory": "chairs",
+        "product_type": "office chair",
+        "colors": ["black"],
+        "materials": ["leather", "metal"],
+        "brand": ["ComfortSeat"],
+        "styles": ["modern"],
+        "features": ["ergonomic", "adjustable height"],
+        "user_rating": 4.4,
+        "price": 249.99
+      }
+    },
+    {
+      "product_id": 26,
+      "name": "Fitness Tracker Band",
+      "image_url": "https://static0.anpoimages.com/wordpress/wp-content/uploads/2023/06/whoop-4-0-square.jpeg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "wearables",
+        "product_type": "fitness tracker",
+        "colors": ["black", "blue"],
+        "materials": ["plastic", "rubber"],
+        "brand": ["FitSense"],
+        "features": ["heart monitor", "GPS", "waterproof"],
+        "user_rating": 3.5,
+        "price": 99.99
+      }
+    },
+    {
+      "product_id": 27,
+      "name": "Wireless Keyboard",
+      "image_url": "https://d1b5h9psu9yexj.cloudfront.net/58035/Logitech-Pebble-Keys-2-K380s_20231205-175535_full.jpeg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "accessories",
+        "product_type": "keyboard",
+        "colors": ["black", "white"],
+        "materials": ["plastic"],
+        "brand": ["TechGear"],
+        "features": ["wireless", "bluetooth", "backlit"],
+        "user_rating": 4.1,
+        "price": 59.99
+      }
+    },
+    {
+      "product_id": 28,
+      "name": "Electric Grill",
+      "image_url": "https://m.media-amazon.com/images/I/81g2EyuzFjL._AC_UF1000,1000_QL80_.jpg",
+      "filterable_properties": {
+        "category": "kitchen",
+        "subcategory": "appliances",
+        "product_type": "grill",
+        "colors": ["black", "silver"],
+        "materials": ["stainless steel", "plastic"],
+        "brand": ["ChefPro"],
+        "features": ["non-stick", "dishwasher safe"],
+        "user_rating": 4.0,
+        "price": 89.99
+      }
+    },
+    {
+      "product_id": 29,
+      "name": "Inflatable Kayak",
+      "image_url": "https://www.jobesports.com/uploads/product/600024001-big.jpg",
+      "filterable_properties": {
+        "category": "sports",
+        "subcategory": "water sports",
+        "product_type": "kayak",
+        "colors": ["blue", "green"],
+        "materials": ["rubber", "plastic"],
+        "brand": ["FitLife"],
+        "features": ["portable", "lightweight"],
+        "user_rating": 4.2,
+        "price": 299.99
+      }
+    },
+    {
+      "product_id": 30,
+      "name": "Digital SLR Camera Lens",
+      "image_url": "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=345/https://static.bhphoto.com/images/images345x345/1457968816_843008.jpg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "camera accessories",
+        "product_type": "camera lens",
+        "colors": ["black"],
+        "materials": ["glass", "metal"],
+        "brand": ["CamTech"],
+        "features": ["wide-angle", "image stabilization"],
+        "user_rating": 4.8,
+        "price": 799.99
+      }
+    },
+    {
+      "product_id": 31,
+      "name": "Acoustic Guitar",
+      "image_url": "https://r2.gear4music.com/media/111/1118091/600/preview.jpg",
+      "filterable_properties": {
+        "category": "music",
+        "subcategory": "instruments",
+        "product_type": "guitar",
+        "colors": ["brown"],
+        "materials": ["wood", "steel"],
+        "brand": ["MusicMasters"],
+        "user_rating": 4.5,
+        "price": 249.99
+      }
+    },
+    {
+      "product_id": 32,
+      "name": "Bluetooth Speaker",
+      "image_url": "https://www.sencor.com/getmedia/6770caad-d0be-4d0d-b5f0-01bbc4c1c555/35059169.jpg.aspx?width=2100&height=2100&ext=.jpg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "audio",
+        "product_type": "speaker",
+        "colors": ["black", "blue"],
+        "materials": ["plastic", "metal"],
+        "brand": ["SoundTech"],
+        "features": ["bluetooth", "waterproof", "portable"],
+        "user_rating": 4.3,
+        "price": 59.99
       }
     }
   ]
