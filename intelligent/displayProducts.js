@@ -54,11 +54,22 @@ function displayProductsAI() {
     const boughtProperties = collateFilterablePropertiesWithCounts(boughtItems);
     const likedProperties = collateFilterablePropertiesWithCounts(likedItems);
 
-    // Define weighting factors
-    const boughtWeight = 2;   // Bought properties have higher influence
-    const likedWeight = 1;    // Liked properties have lower influence
-    const penaltyValue = 1;   // Base penalty value
-    const penaltyWeight = 1;  // Penalty weight for unmatched properties
+    // Define individual weighting factors for each property
+    const propertyWeights = {
+        'category': { boughtWeight: 5, likedWeight: 2, penaltyWeight: 1 },
+        'subcategory': { boughtWeight: 3, likedWeight: 1, penaltyWeight: 1 },
+        'product_type': { boughtWeight: 2, likedWeight: 1, penaltyWeight: 1 },
+        'colors': { boughtWeight: 2, likedWeight: 1, penaltyWeight: 1 },
+        'materials': { boughtWeight: 2, likedWeight: 1, penaltyWeight: 1 },
+        'styles': { boughtWeight: 2, likedWeight: 1, penaltyWeight: 1 },
+        'features': { boughtWeight: 2, likedWeight: 1, penaltyWeight: 1 },
+        'brand': { boughtWeight: 2, likedWeight: 1.5, penaltyWeight: 1 },
+        'user_rating': { boughtWeight: 2, likedWeight: 1, penaltyWeight: 1 },
+        'price': { boughtWeight: 2, likedWeight: 1, penaltyWeight: 1 }
+    };
+
+    // General penalty and filter settings
+    const penaltyValue = 3;     // Base penalty value for missing a property
     const filterPenalty = 1000; // Penalty for missing selected filters
     const filterPenaltyThreshold = -500; // Minimum score threshold
 
@@ -72,35 +83,40 @@ function displayProductsAI() {
         // List of property keys to check (simple properties)
         const propertyKeys = ['category', 'subcategory', 'product_type'];
 
-        // Check simple properties
+        // Check simple properties with individual weights
         propertyKeys.forEach(key => {
-            score += boughtWeight * checkAndScoreProperty(productProps[key], boughtProperties);
-            score += likedWeight * checkAndScoreProperty(productProps[key], likedProperties);
-            score += penaltyWeight * applyPenalty(productProps[key], boughtProperties, likedProperties, penaltyValue);
+            const weights = propertyWeights[key];
+            score += weights.boughtWeight * checkAndScoreProperty(productProps[key], boughtProperties);
+            score += weights.likedWeight * checkAndScoreProperty(productProps[key], likedProperties);
+            score += weights.penaltyWeight * applyPenalty(productProps[key], boughtProperties, likedProperties, penaltyValue);
         });
 
         // Check array properties like colors, materials, styles, features, brand
         const arrayPropertyKeys = ['colors', 'materials', 'styles', 'features', 'brand'];
         arrayPropertyKeys.forEach(key => {
+            const weights = propertyWeights[key];
             if (Array.isArray(productProps[key])) {
                 productProps[key].forEach(value => {
-                    score += boughtWeight * checkAndScoreProperty(value, boughtProperties);
-                    score += likedWeight * checkAndScoreProperty(value, likedProperties);
-                    score += penaltyWeight * applyPenalty(value, boughtProperties, likedProperties, penaltyValue);
+                    score += weights.boughtWeight * checkAndScoreProperty(value, boughtProperties);
+                    score += weights.likedWeight * checkAndScoreProperty(value, likedProperties);
+                    score += weights.penaltyWeight * applyPenalty(value, boughtProperties, likedProperties, penaltyValue);
                 });
             }
         });
 
         // Check numerical properties like user_rating and price ranges
-        const userRatingRange = getRatingRange(productProps.user_rating);
-        score += boughtWeight * checkAndScoreProperty(userRatingRange, boughtProperties);
-        score += likedWeight * checkAndScoreProperty(userRatingRange, likedProperties);
-        score += penaltyWeight * applyPenalty(userRatingRange, boughtProperties, likedProperties, penaltyValue);
-
-        const priceRange = getPriceRange(productProps.price);
-        score += boughtWeight * checkAndScoreProperty(priceRange, boughtProperties);
-        score += likedWeight * checkAndScoreProperty(priceRange, likedProperties);
-        score += penaltyWeight * applyPenalty(priceRange, boughtProperties, likedProperties, penaltyValue);
+        ['user_rating', 'price'].forEach(key => {
+            const weights = propertyWeights[key];
+            let valueRange;
+            if (key === 'user_rating') {
+                valueRange = getRatingRange(productProps[key]);
+            } else {
+                valueRange = getPriceRange(productProps[key]);
+            }
+            score += weights.boughtWeight * checkAndScoreProperty(valueRange, boughtProperties);
+            score += weights.likedWeight * checkAndScoreProperty(valueRange, likedProperties);
+            score += weights.penaltyWeight * applyPenalty(valueRange, boughtProperties, likedProperties, penaltyValue);
+        });
 
         // Apply penalties for missing selected filters
         score += applyFilterPenalties(product, selectedFilters, filterPenalty);
@@ -119,6 +135,7 @@ function displayProductsAI() {
     // Display products sorted by score
     displayProductsAsync(filteredProductScores.map(ps => ps.product));
 }
+
 
 /**
  * Helper function to check if a property exists in properties and return its value.
