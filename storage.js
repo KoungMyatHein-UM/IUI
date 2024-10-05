@@ -120,3 +120,47 @@ function isProductInLiked(productId) {
 function clearLikedList() {
     localStorage.removeItem('liked'); // Remove the "liked" item from local storage
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Adds a filter key to the selected filters in local storage.
+ * @param {string} filterKey - The key of the filter to add.
+ */
+function addSelectedFilter(filterKey) {
+    let selectedFilters = JSON.parse(localStorage.getItem('selectedFilters')) || [];
+    if (!selectedFilters.includes(filterKey)) {
+        selectedFilters.push(filterKey);
+        localStorage.setItem('selectedFilters', JSON.stringify(selectedFilters));
+    }
+}
+
+/**
+ * Removes a filter key from the selected filters in local storage.
+ * @param {string} filterKey - The key of the filter to remove.
+ */
+function removeSelectedFilter(filterKey) {
+    let selectedFilters = JSON.parse(localStorage.getItem('selectedFilters')) || [];
+    selectedFilters = selectedFilters.filter(key => key !== filterKey);
+    localStorage.setItem('selectedFilters', JSON.stringify(selectedFilters));
+}
+
+/**
+ * Retrieves the selected filters from local storage.
+ * @returns {Array} - An array of selected filter keys.
+ */
+function getSelectedFilters() {
+    return JSON.parse(localStorage.getItem('selectedFilters')) || [];
+}
