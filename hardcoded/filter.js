@@ -191,10 +191,10 @@ function displayFilterKeys(keys) {
         originalOrder.push({ element: filterBox, position: index });
 
 
-        if (['wireless', 'electronics', 'black', 'plastic', 'bluetooth', '$0 - $199', 'audio'].includes(key)) {
-            filterBox.classList.add('active');
-            filtersContainer.insertBefore(filterBox, filtersContainer.firstChild);
-        }
+        // if (['wireless', 'electronics', 'black', 'plastic', 'bluetooth', '$0 - $199', 'audio'].includes(key)) {
+        //     filterBox.classList.add('active');
+        //     filtersContainer.insertBefore(filterBox, filtersContainer.firstChild);
+        // }
 
         // Add click event listener to toggle color on click and move element
         filterBox.addEventListener('click', () => {

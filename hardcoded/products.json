@@ -1,0 +1,518 @@
+{
+  "products": [
+    {
+      "product_id": 1,
+      "name": "Classic Wooden Chair",
+      "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnlMh-VQdsdzvvOJQPDHiQEsFGI7_pM_doLg&s",
+      "filterable_properties": {
+        "category": "furniture",
+        "subcategory": "chairs",
+        "product_type": "chair",
+        "colors": ["brown"],
+        "materials": ["wood"],
+        "brand": ["WoodMaster"],
+        "styles": ["rustic", "classic"],
+        "user_rating": 0.2,
+        "price": 129.99
+      }
+    },
+    {
+      "product_id": 2,
+      "name": "Noise-Cancelling Headphones",
+      "image_url": "https://m.media-amazon.com/images/I/51wdav0Z+2L._AC_UF1000,1000_QL80_.jpg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "audio",
+        "product_type": "headphones",
+        "colors": ["black", "white"],
+        "materials": ["plastic", "synthetic leather"],
+        "brand": ["SoundTech"],
+        "features": ["noise cancelling", "wireless", "bluetooth"],
+        "user_rating": 1.8,
+        "price": 199.99
+      }
+    },
+    {
+      "product_id": 3,
+      "name": "Modern Glass Coffee Table",
+      "image_url": "https://www.glassdiningtables.co.uk/cdn/shop/products/glass-pedestal-coffee-table_1000x750.jpg?v=1626282623",
+      "filterable_properties": {
+        "category": "furniture",
+        "subcategory": "tables",
+        "product_type": "coffee table",
+        "colors": ["clear", "silver"],
+        "materials": ["glass", "metal"],
+        "brand": ["GlassPlus"],
+        "styles": ["modern", "minimalist"],
+        "user_rating": 3.6,
+        "price": 249.99
+      }
+    },
+    {
+      "product_id": 4,
+      "name": "Wireless Bluetooth Earbuds",
+      "image_url": "https://m.media-amazon.com/images/I/71FvvlyAMJL.jpg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "audio",
+        "product_type": "earbuds",
+        "colors": ["black", "blue"],
+        "materials": ["plastic", "rubber"],
+        "brand": ["EarPro"],
+        "features": ["bluetooth", "waterproof", "wireless"],
+        "user_rating": 2.5,
+        "price": 89.99
+      }
+    },
+    {
+      "product_id": 5,
+      "name": "Stainless Steel Kitchen Knife Set",
+      "image_url": "https://m.media-amazon.com/images/I/619XYSj0acL._AC_UF894,1000_QL80_.jpg",
+      "filterable_properties": {
+        "category": "kitchen",
+        "subcategory": "utensils",
+        "product_type": "knife set",
+        "colors": ["silver", "black"],
+        "materials": ["stainless steel", "plastic"],
+        "brand": ["ChefPro"],
+        "features": ["dishwasher safe", "ergonomic handle"],
+        "user_rating": 1.5,
+        "price": 79.99
+      }
+    },
+    {
+      "product_id": 6,
+      "name": "Smart LED Light Bulb",
+      "image_url": "https://d1vfpdpyv21g5i.cloudfront.net/zunpulse/products_v5/bulb/D10000_1.jpg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "lighting",
+        "product_type": "light bulb",
+        "colors": ["white", "multicolor"],
+        "materials": ["plastic"],
+        "brand": ["BrightLife"],
+        "features": ["smart home compatible", "energy efficient", "color changing"],
+        "user_rating": 4.7,
+        "price": 29.99
+      }
+    },
+    {
+      "product_id": 7,
+      "name": "Ergonomic Office Desk",
+      "image_url": "https://www.ikea.com/nl/en/images/products/arkelstorp-desk-black__0735967_pe740301_s5.jpg?f=s",
+      "filterable_properties": {
+        "category": "furniture",
+        "subcategory": "desks",
+        "product_type": "desk",
+        "colors": ["white", "black"],
+        "materials": ["wood", "metal"],
+        "brand": ["DeskPro"],
+        "styles": ["modern", "minimalist"],
+        "user_rating": 4.5,
+        "price": 299.99
+      }
+    },
+    {
+      "product_id": 8,
+      "name": "Smart LED TV 55\"",
+      "image_url": "https://images.philips.com/is/image/philipsconsumer/eb0c3155c9104e05b906afbd011a24c0?wid=700&hei=700&$pnglarge$",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "televisions",
+        "product_type": "tv",
+        "colors": ["black"],
+        "materials": ["plastic", "metal"],
+        "brand": ["VisionTech"],
+        "features": ["4K", "smart TV", "HDR", "LCD display"],
+        "user_rating": 4.7,
+        "price": 599.99
+      }
+    },
+    {
+      "product_id": 9,
+      "name": "Professional DSLR Camera",
+      "image_url": "https://i1.adis.ws/i/canon/eos-5d-mark-iv-frt-w-ef-50mm_cbe4f7204ac24bf9bc8f79fb6cce4179?$block-media-1by1-dt-jpg$",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "cameras",
+        "product_type": "camera",
+        "colors": ["black"],
+        "materials": ["plastic", "metal"],
+        "brand": ["CamTech"],
+        "features": ["24MP", "Wi-Fi", "HD Video"],
+        "user_rating": 4.6,
+        "price": 1199.99
+      }
+    },
+    {
+      "product_id": 10,
+      "name": "Gaming Laptop",
+      "image_url": "https://i5.walmartimages.com/seo/ASUS-ROG-Strix-15-6-R9-RTX-3060-Gaming-Laptop-FHD-AMD-Ryzen-9-5900HX-NVIDIA-GeForce-3060-16GB-RAM-1TB-SSD-Eclipse-Gray-Windows-10-Home-G513QM-WS96_8ca98551-8e80-431a-a0bf-2ae037b9e571.74a18e3919f93a362f7367ac2d157d84.jpeg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "laptops",
+        "product_type": "laptop",
+        "colors": ["black", "red"],
+        "materials": ["metal", "plastic"],
+        "brand": ["GamerPro"],
+        "features": ["16GB RAM", "SSD", "RGB Keyboard", "LCD display"],
+        "user_rating": 4.9,
+        "price": 1499.99
+      }
+    },
+    {
+      "product_id": 11,
+      "name": "Ceramic Cooking Set",
+      "image_url": "https://m.media-amazon.com/images/I/71ygaRKkdDL.jpg",
+      "filterable_properties": {
+        "category": "kitchen",
+        "subcategory": "cookware",
+        "product_type": "cooking set",
+        "colors": ["blue", "black"],
+        "materials": ["ceramic", "stainless steel"],
+        "brand": ["ChefWare"],
+        "features": ["non-stick", "induction compatible"],
+        "user_rating": 4.3,
+        "price": 129.99
+      }
+    },
+    {
+      "product_id": 12,
+      "name": "Yoga Mat with Strap",
+      "image_url": "https://cdn.webshopapp.com/shops/251730/files/407477807/yogisha-yogisha-yoga-mat-strap-olive-green.jpg",
+      "filterable_properties": {
+        "category": "sports",
+        "subcategory": "exercise equipment",
+        "product_type": "yoga mat",
+        "colors": ["purple", "green"],
+        "materials": ["foam"],
+        "brand": ["FitLife"],
+        "features": ["non-slip", "lightweight"],
+        "user_rating": 4.4,
+        "price": 29.99
+      }
+    },
+    {
+      "product_id": 13,
+      "name": "Portable Blender",
+      "image_url": "https://nutribullet.nl/cdn/shop/files/nutribulletTo-Go1000x1000Zwart_800x.jpg",
+      "filterable_properties": {
+        "category": "kitchen",
+        "subcategory": "appliances",
+        "product_type": "blender",
+        "colors": ["blue", "white"],
+        "materials": ["plastic", "stainless steel"],
+        "brand": ["BlendEase"],
+        "features": ["portable", "USB rechargeable"],
+        "user_rating": 2.0,
+        "price": 39.99
+      }
+    },
+    {
+      "product_id": 14,
+      "name": "Electric Kettle",
+      "image_url": "https://www.vidiem.in/uploads/images/Kettle_Chrome_r1.png",
+      "filterable_properties": {
+        "category": "kitchen",
+        "subcategory": "appliances",
+        "product_type": "kettle",
+        "colors": ["silver", "black"],
+        "materials": ["stainless steel"],
+        "brand": ["HeatWave"],
+        "features": ["auto shut-off", "quick boil"],
+        "user_rating": 4.1,
+        "price": 49.99
+      }
+    },
+    {
+      "product_id": 15,
+      "name": "Adjustable Dumbbell Set",
+      "image_url": "https://m.media-amazon.com/images/I/71bxRATPpIL._AC_UF894,1000_QL80_.jpg",
+      "filterable_properties": {
+        "category": "sports",
+        "subcategory": "fitness equipment",
+        "product_type": "dumbbell set",
+        "colors": ["black", "red"],
+        "materials": ["steel", "rubber"],
+        "brand": ["PowerLift"],
+        "features": ["adjustable weight", "space-saving"],
+        "user_rating": 3.8,
+        "price": 159.99
+      }
+    },
+    {
+      "product_id": 16,
+      "name": "Smartwatch with Heart Monitor",
+      "image_url": "https://www.lifeline.com/wp-content/uploads/2024/05/Smartwatch-Heartrate-550x550-1.png",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "wearables",
+        "product_type": "smartwatch",
+        "colors": ["black", "silver"],
+        "materials": ["metal", "glass"],
+        "brand": ["FitSense"],
+        "features": ["heart rate monitor", "GPS", "waterproof", "LCD display"],
+        "user_rating": 2.7,
+        "price": 129.99
+      }
+    },
+    {
+      "product_id": 17,
+      "name": "Foldable Treadmill",
+      "image_url": "https://redfernentus.com/cdn/shop/files/iQSlimTreadFoldableTreadmill_1000x1000_3ea61ac3-e6cb-4965-8743-c27cf5e07c16.png?v=1709923429",
+      "filterable_properties": {
+        "category": "sports",
+        "subcategory": "exercise equipment",
+        "product_type": "treadmill",
+        "colors": ["black"],
+        "materials": ["steel", "plastic"],
+        "brand": ["RunPro"],
+        "features": ["foldable", "LCD display", "heart rate monitor"],
+        "user_rating": 1.9,
+        "price": 499.99
+      }
+    },
+    {
+      "product_id": 18,
+      "name": "Vintage Record Player",
+      "image_url": "https://deixalles.org/tienda/wp-content/uploads/2022/02/PhotoRoom-20220207_124718.jpg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "audio",
+        "product_type": "record player",
+        "colors": ["brown", "black"],
+        "materials": ["wood", "plastic"],
+        "brand": ["RetroSound"],
+        "features": ["mono speaker"],
+        "user_rating": 3.4,
+        "price": 99.99
+      }
+    },
+    {
+      "product_id": 19,
+      "name": "Wireless Mouse",
+      "image_url": "https://cdn.shopify.com/s/files/1/0240/9337/products/GOMouse3-min_50cbaccc-84ee-4bcc-91ee-becc86469ee0.jpg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "accessories",
+        "product_type": "mouse",
+        "colors": ["black", "white"],
+        "materials": ["plastic"],
+        "brand": ["TechGear"],
+        "features": ["wireless", "bluetooth"],
+        "user_rating": 4.2,
+        "price": 49.99
+      }
+    },
+    {
+      "product_id": 20,
+      "name": "Stainless Steel Water Bottle",
+      "image_url": "https://m.media-amazon.com/images/I/71wFyZlg58L.jpg",
+      "filterable_properties": {
+        "category": "kitchen",
+        "subcategory": "utensils",
+        "product_type": "water bottle",
+        "colors": ["silver", "blue"],
+        "materials": ["stainless steel"],
+        "brand": ["HydroFlow"],
+        "features": ["insulated", "dishwasher safe"],
+        "user_rating": 4.5,
+        "price": 24.99
+      }
+    },
+    {
+      "product_id": 21,
+      "name": "Gaming Headset",
+      "image_url": "https://cf-images.dustin.eu/cdn-cgi/image/format=auto,quality=75,width=828,,fit=contain/image/d200001004294776/logitech-pro-x-wireless-gaming-headset-black-zwart.jpg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "audio",
+        "product_type": "gaming headset",
+        "colors": ["black", "red"],
+        "materials": ["plastic", "synthetic leather"],
+        "brand": ["GamerPro"],
+        "features": ["noise cancelling", "wireless", "RGB lighting"],
+        "user_rating": 4.3,
+        "price": 89.99
+      }
+    },
+    {
+      "product_id": 22,
+      "name": "Modern Floor Lamp",
+      "image_url": "https://i.etsystatic.com/13668284/r/il/f7d075/3372087671/il_570xN.3372087671_b25t.jpg",
+      "filterable_properties": {
+        "category": "furniture",
+        "subcategory": "lighting",
+        "product_type": "floor lamp",
+        "colors": ["black", "silver"],
+        "materials": ["metal", "plastic"],
+        "brand": ["BrightLife"],
+        "styles": ["modern", "minimalist"],
+        "user_rating": 4.0,
+        "price": 79.99
+      }
+    },
+    {
+      "product_id": 23,
+      "name": "Stainless Steel Toaster",
+      "image_url": "https://m.media-amazon.com/images/I/71F-IqyCk9L.jpg",
+      "filterable_properties": {
+        "category": "kitchen",
+        "subcategory": "appliances",
+        "product_type": "toaster",
+        "colors": ["silver", "black"],
+        "materials": ["stainless steel", "plastic"],
+        "brand": ["HeatWave"],
+        "features": ["auto shut-off", "quick toast"],
+        "user_rating": 3.9,
+        "price": 59.99
+      }
+    },
+    {
+      "product_id": 24,
+      "name": "Adjustable Standing Desk",
+      "image_url": "https://www.bravour.com/media/catalog/product/cache/cfae5f1ac859817bdbf9c94546aeb016/h/a/ha1_height_adjustable_desk_standing_position_low.jpg",
+      "filterable_properties": {
+        "category": "furniture",
+        "subcategory": "desks",
+        "product_type": "standing desk",
+        "colors": ["white", "black"],
+        "materials": ["wood", "metal"],
+        "brand": ["DeskPro"],
+        "styles": ["modern", "minimalist"],
+        "features": ["adjustable height"],
+        "user_rating": 4.6,
+        "price": 399.99
+      }
+    },
+    {
+      "product_id": 25,
+      "name": "Leather Office Chair",
+      "image_url": "https://www.ikea.com/nl/en/images/products/alefjall-office-chair-grann-golden-brown__0724709_pe734591_s5.jpg?f=s",
+      "filterable_properties": {
+        "category": "furniture",
+        "subcategory": "chairs",
+        "product_type": "office chair",
+        "colors": ["black"],
+        "materials": ["leather", "metal"],
+        "brand": ["ComfortSeat"],
+        "styles": ["modern"],
+        "features": ["ergonomic", "adjustable height"],
+        "user_rating": 4.4,
+        "price": 249.99
+      }
+    },
+    {
+      "product_id": 26,
+      "name": "Fitness Tracker Band",
+      "image_url": "https://static0.anpoimages.com/wordpress/wp-content/uploads/2023/06/whoop-4-0-square.jpeg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "wearables",
+        "product_type": "fitness tracker",
+        "colors": ["black", "blue"],
+        "materials": ["plastic", "rubber"],
+        "brand": ["FitSense"],
+        "features": ["heart monitor", "GPS", "waterproof"],
+        "user_rating": 3.5,
+        "price": 99.99
+      }
+    },
+    {
+      "product_id": 27,
+      "name": "Wireless Keyboard",
+      "image_url": "https://d1b5h9psu9yexj.cloudfront.net/58035/Logitech-Pebble-Keys-2-K380s_20231205-175535_full.jpeg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "accessories",
+        "product_type": "keyboard",
+        "colors": ["black", "white"],
+        "materials": ["plastic"],
+        "brand": ["TechGear"],
+        "features": ["wireless", "bluetooth", "backlit"],
+        "user_rating": 4.1,
+        "price": 59.99
+      }
+    },
+    {
+      "product_id": 28,
+      "name": "Electric Grill",
+      "image_url": "https://m.media-amazon.com/images/I/81g2EyuzFjL._AC_UF1000,1000_QL80_.jpg",
+      "filterable_properties": {
+        "category": "kitchen",
+        "subcategory": "appliances",
+        "product_type": "grill",
+        "colors": ["black", "silver"],
+        "materials": ["stainless steel", "plastic"],
+        "brand": ["ChefPro"],
+        "features": ["non-stick", "dishwasher safe"],
+        "user_rating": 4.0,
+        "price": 89.99
+      }
+    },
+    {
+      "product_id": 29,
+      "name": "Inflatable Kayak",
+      "image_url": "https://www.jobesports.com/uploads/product/600024001-big.jpg",
+      "filterable_properties": {
+        "category": "sports",
+        "subcategory": "water sports",
+        "product_type": "kayak",
+        "colors": ["blue", "green"],
+        "materials": ["rubber", "plastic"],
+        "brand": ["FitLife"],
+        "features": ["portable", "lightweight"],
+        "user_rating": 4.2,
+        "price": 299.99
+      }
+    },
+    {
+      "product_id": 30,
+      "name": "Digital SLR Camera Lens",
+      "image_url": "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=345/https://static.bhphoto.com/images/images345x345/1457968816_843008.jpg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "camera accessories",
+        "product_type": "camera lens",
+        "colors": ["black"],
+        "materials": ["glass", "metal"],
+        "brand": ["CamTech"],
+        "features": ["wide-angle", "image stabilization"],
+        "user_rating": 4.8,
+        "price": 799.99
+      }
+    },
+    {
+      "product_id": 31,
+      "name": "Acoustic Guitar",
+      "image_url": "https://r2.gear4music.com/media/111/1118091/600/preview.jpg",
+      "filterable_properties": {
+        "category": "music",
+        "subcategory": "instruments",
+        "product_type": "guitar",
+        "colors": ["brown"],
+        "materials": ["wood", "steel"],
+        "brand": ["MusicMasters"],
+        "user_rating": 4.5,
+        "price": 249.99
+      }
+    },
+    {
+      "product_id": 32,
+      "name": "Bluetooth Speaker",
+      "image_url": "https://www.sencor.com/getmedia/6770caad-d0be-4d0d-b5f0-01bbc4c1c555/35059169.jpg.aspx?width=2100&height=2100&ext=.jpg",
+      "filterable_properties": {
+        "category": "electronics",
+        "subcategory": "audio",
+        "product_type": "speaker",
+        "colors": ["black", "blue"],
+        "materials": ["plastic", "metal"],
+        "brand": ["SoundTech"],
+        "features": ["bluetooth", "waterproof", "portable"],
+        "user_rating": 4.3,
+        "price": 59.99
+      }
+    }
+  ]
+}
+
