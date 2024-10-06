@@ -34,8 +34,7 @@ async function fetchProducts() {
  * @param {Array} products - The list of products to display.
  */
 function displayProductsDefault() {
-    // Display products in the order they appear in the JSON file (default order)
-    displayProductsAsync(products);
+    displayProductsAI()
 }
 
 /**
@@ -133,7 +132,9 @@ function displayProductsAI() {
     console.log(filteredProductScores); // Log the sorted products and their scores
 
     // Display products sorted by score
-    displayProductsAsync(filteredProductScores.map(ps => ps.product));
+    setTimeout(function() {
+        displayProductsAsync(filteredProductScores.map(ps => ps.product));
+    }, 300);
 }
 
 
@@ -262,7 +263,9 @@ function displayProductsSearch(searchString) {
         .map(item => item.product);                                 // Extract the sorted product array
 
     // Display the sorted products
-    displayProductsAsync(sortedProducts);
+    setTimeout(function() {
+        displayProductsAsync(products);
+    }, 300);
 }
 
 /**
@@ -272,7 +275,9 @@ function displayProductsSearch(searchString) {
 function displayProductsAscending() {
     // Sort products by price in ascending order
     products.sort((a, b) => a.filterable_properties.price - b.filterable_properties.price);
-    displayProductsAsync(products);
+    setTimeout(function() {
+        displayProductsAsync(products);
+    }, 300);
 }
 
 /**
@@ -282,7 +287,9 @@ function displayProductsAscending() {
 function displayProductsDescending() {
     // Sort products by price in descending order
     products.sort((a, b) => b.filterable_properties.price - a.filterable_properties.price);
-    displayProductsAsync(products);
+    setTimeout(function() {
+        displayProductsAsync(products);
+    }, 300);
 }
 
 /**
@@ -296,7 +303,9 @@ function displayProductsRandom() {
         .sort((a, b) => a.sort - b.sort)
         .map(({ product }) => product);
 
-    displayProductsAsync(shuffledProducts);
+    setTimeout(function() {
+        displayProductsAsync(products);
+    }, 300);
 }
 
 /**
