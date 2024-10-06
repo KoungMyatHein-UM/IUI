@@ -324,7 +324,7 @@
       "filterable_properties": {
         "category": "electronics",
         "subcategory": "audio",
-        "product_type": "gaming headset",
+        "product_type": "headphones",
         "colors": ["black", "red"],
         "materials": ["plastic", "synthetic leather"],
         "brand": ["GamerPro"],
