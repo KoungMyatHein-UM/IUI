@@ -234,7 +234,9 @@ function displayFilterKeys(keys) {
                 addSelectedFilter(key);
             }
 
-            displayProductsAI();
+            setTimeout(function() {
+                displayProductsAI();
+            }, 250);
         });
 
         filtersContainer.appendChild(filterBox); // Append the filter box to the container
