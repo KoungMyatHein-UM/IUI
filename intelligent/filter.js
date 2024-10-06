@@ -1,4 +1,45 @@
 /**
+ * Adjusts the counts in allProperties based on bought and liked properties and their weights.
+ * @param {Object} allProperties - The collated properties from all products.
+ * @param {Object} boughtProperties - The collated properties from bought items.
+ * @param {Object} likedProperties - The collated properties from liked items.
+ * @param {number} boughtWeight - The weight to apply to bought properties.
+ * @param {number} likedWeight - The weight to apply to liked properties.
+ * @returns {Object} - The adjusted properties with updated counts.
+ */
+function adjustFilterablePropertiesCounts(allProperties, boughtProperties, likedProperties, boughtWeight, likedWeight) {
+    const adjustedProperties = JSON.parse(JSON.stringify(allProperties)); // Deep copy to avoid mutating original
+
+    // Function to adjust counts for a given property category
+    function adjustCountsForCategory(category) {
+        const allPropsCategory = adjustedProperties[category];
+        const boughtPropsCategory = boughtProperties[category] || {};
+        const likedPropsCategory = likedProperties[category] || {};
+
+        for (const prop in allPropsCategory) {
+            let adjustment = 0;
+
+            if (boughtPropsCategory[prop]) {
+                adjustment += boughtPropsCategory[prop] * boughtWeight;
+            }
+            if (likedPropsCategory[prop]) {
+                adjustment += likedPropsCategory[prop] * likedWeight;
+            }
+
+            // Increase the count by the adjustment
+            allPropsCategory[prop] += adjustment;
+        }
+    }
+
+    // Adjust counts for each category
+    for (const category in adjustedProperties) {
+        adjustCountsForCategory(category);
+    }
+
+    return adjustedProperties;
+}
+
+/**
  * Collates all filterable properties from the products into a single object with counts.
  * @param {Array} products - The list of products.
  * @returns {Object} - An object containing filterable properties and their counts.
@@ -10,8 +51,9 @@ function collateFilterablePropertiesWithCounts(products) {
     products.forEach(product => {
         const props = product.filterable_properties;
 
-        // Count each category, product_type, etc.
+        // Count each category, subcategory, product_type, etc.
         addToFilterableProperties(filterableProperties, 'category', props.category);
+        addToFilterableProperties(filterableProperties, 'subcategory', props.subcategory);
         addToFilterableProperties(filterableProperties, 'product_type', props.product_type);
 
         // Count each color
@@ -42,13 +84,20 @@ function collateFilterablePropertiesWithCounts(products) {
             });
         }
 
-        // Count ratings in predefined ranges
-        if (props.user_rating) {
-            const ratingRange = getRatingRange(props.user_rating);
-            addToFilterableProperties(filterableProperties, 'rating', ratingRange);
+        // Count each feature
+        if (props.features) {
+            props.features.forEach(feature => {
+                addToFilterableProperties(filterableProperties, 'features', feature);
+            });
         }
 
-        // Count prices in predefined ranges
+        // Count ratings in increments of 1
+        if (props.user_rating) {
+            const ratingRange = getRatingRange(props.user_rating);
+            addToFilterableProperties(filterableProperties, 'user_rating', ratingRange);
+        }
+
+        // Count prices in steps of 200
         if (props.price) {
             const priceRange = getPriceRange(props.price);
             addToFilterableProperties(filterableProperties, 'price', priceRange);
@@ -79,26 +128,56 @@ function addToFilterableProperties(filterableProperties, key, value) {
 }
 
 /**
- * Determines the price range for a given price, with predefined ranges.
+ * Determines the price range for a given price, with increments of 200.
  * @param {number} price - The price of the product.
  * @returns {string} - The price range in which the product falls.
  */
 function getPriceRange(price) {
-    if (price < 200) return '$0 - $199';
-    if (price < 400) return '$200 - $399';
-    if (price < 600) return '$400 - $599';
-    if (price < 800) return '$600 - $799';
-    return '$800 and above';
+    const min = Math.floor(price / 200) * 200;
+    const max = min + 199;
+    return `$${min} - $${max}`;
 }
 
 /**
- * Determines the rating range for a given rating, with predefined ranges.
+ * Determines the rating range for a given rating, with increments of 1.
  * @param {number} rating - The user rating of the product.
  * @returns {string} - The rating range in which the product falls.
  */
 function getRatingRange(rating) {
     const min = Math.floor(rating);
-    return `${min} Stars & Up`;
+    const max = min + 0.99;
+    return `${min} - ${max}`;
+}
+
+/**
+ * Recursively flattens the object and collects all key-value pairs, sorted by value in descending order.
+ * @param {Object} obj - The object to flatten.
+ * @returns {Array} - Array of key-value pairs as strings, sorted by value in descending order.
+ */
+function flattenObject(obj) {
+    const result = [];
+
+    // Helper function to recursively traverse the object
+    function recursiveFlatten(subObj) {
+        for (const key in subObj) {
+            if (typeof subObj[key] === 'object' && !Array.isArray(subObj[key])) {
+                // If the value is an object, recurse into it
+                recursiveFlatten(subObj[key]);
+            } else {
+                // Otherwise, add the key-value pair to the result array
+                result.push({ key: `${key}`, value: subObj[key] });
+            }
+        }
+    }
+
+    // Start the recursive flattening
+    recursiveFlatten(obj);
+
+    // Sort by the 'value' property in descending order
+    result.sort((a, b) => b.value - a.value);
+
+    // Return the array in "key: value" format as strings
+    return result.map(item => `${item.key}: ${item.value}`);
 }
 
 /**
@@ -111,12 +190,11 @@ function capitalizeWords(str) {
 }
 
 /**
- * Displays the filter keys in the specified container as individual boxes.
+ * Displays the filter keys in the filters-container as individual boxes.
  * @param {Array} keys - Array of filter keys to display.
- * @param {string} container_id - The ID of the container where filters will be displayed.
  */
-function displayFilterKeys(keys, container_id) {
-    const filtersContainer = document.getElementById(container_id);
+function displayFilterKeys(keys) {
+    const filtersContainer = document.getElementById('filters-container');
 
     // Clear any existing filters
     filtersContainer.innerHTML = '';
@@ -142,15 +220,15 @@ function displayFilterKeys(keys, container_id) {
             moveActiveToTop(filtersContainer, filterBox);
         }
 
-        // Add click event listener to toggle active state and reorder filters
+        // Add click event listener to toggle color on click and move element
         filterBox.addEventListener('click', () => {
             if (filterBox.classList.contains('active')) {
-                // If already active, deactivate and restore position
+                // If already active, unclick: remove 'active', restore position, and update local storage
                 filterBox.classList.remove('active');
                 restoreOriginalPosition(filtersContainer, filterBox, originalOrder);
                 removeSelectedFilter(key);
             } else {
-                // If not active, activate and move to top
+                // If not active, click: add 'active', move to top, and update local storage
                 filterBox.classList.add('active');
                 moveActiveToTop(filtersContainer, filterBox);
                 addSelectedFilter(key);
@@ -169,15 +247,17 @@ function displayFilterKeys(keys, container_id) {
  * @param {HTMLElement} element - The filter box element to move to the top.
  */
 function moveActiveToTop(container, element) {
-    // Move active filter to the top (after the last active filter)
+    // Move active filter to the top (before the first non-active filter)
     const activeElements = Array.from(container.children).filter(child => child.classList.contains('active'));
     if (activeElements.length === 0) {
         container.insertBefore(element, container.firstChild);
     } else {
+        // Move after the last active element
         const lastActiveElement = activeElements[activeElements.length - 1];
         container.insertBefore(element, lastActiveElement.nextSibling);
     }
 }
+
 
 /**
  * Restores the filter box to its original position based on the originalOrder array.
@@ -197,6 +277,8 @@ function restoreOriginalPosition(container, element, originalOrder) {
         container.insertBefore(element, container.children[original.position + indexAfterActive] || null);
     }
 }
+
+
 
 /**
  * Calculates scores for each filter based on counts from all, bought, and liked products.
@@ -265,44 +347,8 @@ function calculateFilterScores(allProperties, boughtProperties, likedProperties)
     return filterScores;
 }
 
-/**
- * Retrieves the selected filters from local storage.
- * @returns {Array} - Array of selected filter keys.
- */
-function getSelectedFilters() {
-    const selected = localStorage.getItem('selectedFilters');
-    return selected ? JSON.parse(selected) : [];
-}
 
-/**
- * Adds a filter key to the selected filters in local storage.
- * @param {string} key - The filter key to add.
- */
-function addSelectedFilter(key) {
-    const selected = getSelectedFilters();
-    if (!selected.includes(key)) {
-        selected.push(key);
-        localStorage.setItem('selectedFilters', JSON.stringify(selected));
-    }
-}
 
-/**
- * Removes a filter key from the selected filters in local storage.
- * @param {string} key - The filter key to remove.
- */
-function removeSelectedFilter(key) {
-    let selected = getSelectedFilters();
-    selected = selected.filter(item => item !== key);
-    localStorage.setItem('selectedFilters', JSON.stringify(selected));
-}
-
-/**
- * Placeholder function to display products based on AI or other logic.
- * Replace this with your actual product display logic.
- */
-function displayProductsAI() {
-    // Implement your product display logic here
-}
 
 /**
  * Main function to fetch products and display filters based on calculated scores.
@@ -331,62 +377,16 @@ async function main() {
         // Log the sorted filters and their scores
         console.log(filterScores); // Log the filters with their scores
 
-        // Organize filters by category
-        const organizedFilters = {};
+        // Extract the sorted filter keys
+        const sortedFilterKeys = filterScores.map(item => item.key);
 
-        filterScores.forEach(item => {
-            if (!organizedFilters[item.category]) {
-                organizedFilters[item.category] = [];
-            }
-            organizedFilters[item.category].push(item.key);
-        });
-
-        // Define mapping between categories and their container IDs
-        const categoryContainerMap = {
-            'category': 'category-container',
-            'product_type': 'product-type-container',
-            'colors': 'colors-container',
-            'materials': 'materials-container',
-            'brand': 'brand-container',
-            'styles': 'styles-container',
-            'rating': 'rating-container',
-            'price': 'price-container'
-        };
-
-        // Iterate through each category and display its filters
-        for (const category in organizedFilters) {
-            if (organizedFilters.hasOwnProperty(category) && categoryContainerMap[category]) {
-                displayFilterKeys(organizedFilters[category], categoryContainerMap[category]);
-            }
-        }
-
-        // Handle pre-defined Price and Rating filters separately if needed
-        // For example, you can directly set them if they are static
-        // Or ensure they are populated based on the filterScores
+        // Display the filters
+        displayFilterKeys(sortedFilterKeys);
     } catch (error) {
         console.error('Error fetching the products:', error);
     }
 }
 
-/**
- * Placeholder function to get the list of bought product IDs.
- * Replace this with your actual implementation.
- * @returns {Array} - Array of bought product IDs.
- */
-function getBoughtList() {
-    // Implement your logic to retrieve bought product IDs
-    return [];
-}
-
-/**
- * Placeholder function to get the list of liked product IDs.
- * Replace this with your actual implementation.
- * @returns {Array} - Array of liked product IDs.
- */
-function getLikedList() {
-    // Implement your logic to retrieve liked product IDs
-    return [];
-}
 
 // Run the main function
 main();

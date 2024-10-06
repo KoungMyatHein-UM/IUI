@@ -11,6 +11,7 @@
         "colors": ["brown"],
         "materials": ["wood"],
         "brand": ["WoodMaster"],
+        "styles": ["rustic", "classic"],
         "user_rating": 0.2,
         "price": 129.99
       }
@@ -42,6 +43,7 @@
         "colors": ["clear", "silver"],
         "materials": ["glass", "metal"],
         "brand": ["GlassPlus"],
+        "styles": ["modern", "minimalist"],
         "user_rating": 3.6,
         "price": 249.99
       }
@@ -105,6 +107,7 @@
         "colors": ["white", "black"],
         "materials": ["wood", "metal"],
         "brand": ["DeskPro"],
+        "styles": ["modern", "minimalist"],
         "user_rating": 4.5,
         "price": 299.99
       }
@@ -344,6 +347,7 @@
         "colors": ["black", "silver"],
         "materials": ["metal", "plastic"],
         "brand": ["BrightLife"],
+        "styles": ["modern", "minimalist"],
         "user_rating": 4.0,
         "price": 79.99
       }
@@ -375,6 +379,7 @@
         "colors": ["white", "black"],
         "materials": ["wood", "metal"],
         "brand": ["DeskPro"],
+        "styles": ["modern", "minimalist"],
         "features": ["adjustable height"],
         "user_rating": 4.6,
         "price": 399.99
@@ -391,6 +396,7 @@
         "colors": ["black"],
         "materials": ["leather", "metal"],
         "brand": ["ComfortSeat"],
+        "styles": ["modern"],
         "features": ["ergonomic", "adjustable height"],
         "user_rating": 4.4,
         "price": 249.99
