@@ -36,9 +36,9 @@ function collateFilterablePropertiesWithCounts(products) {
         }
 
         // Count each style
-        if (props.features) {
-            props.features.forEach(feature => {
-                addToFilterableProperties(filterableProperties, 'features', feature);
+        if (props.styles) {
+            props.styles.forEach(style => {
+                addToFilterableProperties(filterableProperties, 'styles', style);
             });
         }
 
@@ -156,10 +156,7 @@ function displayFilterKeys(keys, container_id) {
                 addSelectedFilter(key);
             }
 
-            // displayProductsAI();
-            setTimeout(function() {
-                location.reload();
-            }, 2000);
+            displayProductsAI();
         });
 
         filtersContainer.appendChild(filterBox); // Append the filter box to the container
@@ -351,12 +348,10 @@ async function main() {
             'colors': 'colors-container',
             'materials': 'materials-container',
             'brand': 'brand-container',
-            'features': 'features-container',
+            'styles': 'styles-container',
             'rating': 'rating-container',
             'price': 'price-container'
         };
-
-        console.log(organizedFilters)
 
         // Iterate through each category and display its filters
         for (const category in organizedFilters) {
