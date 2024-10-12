@@ -1,0 +1,111 @@
+/* Flexbox grid for the products */
+.products-container {
+    display: flex;
+    flex-wrap: wrap;           /* Allows the products to wrap to the next line */
+    gap: 20px;                 /* Adds space between products */
+    justify-content: flex-start;  /* Align products to the left */
+}
+
+/* Styling for individual products */
+.product {
+    flex: 1 1 calc(33.333% - 40px); /* Each product takes up about 1/3 of the row minus the gap */
+    max-width: 300px;               /* Maximum width for each product card */
+    border: 1px solid #ccc;         /* Add a light gray border */
+    padding: 10px;                  /* Add some padding inside the border */
+    border-radius: 5px;             /* Optional: Add rounded corners */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    text-align: center;             /* Center content inside the product */
+}
+
+/* Ensure the images are cropped to a square */
+.product-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 10px; /* Center the image and add some space below */
+}
+
+/* Styling for the Buy button */
+.buy-button {
+    padding: 8px 16px;
+    margin-right: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 1s ease; /* Smooth transition */
+}
+
+/* Styling for the Favorite (Star) button */
+.favorite-button {
+    padding: 8px 12px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Styling for the SVG star */
+.star-svg {
+    width: 24px;
+    height: 24px;
+    transition: filter 0.3s ease; /* Smooth transition for the color change */
+}
+
+/* Button container to align buttons */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* Styling for the star rating container */
+.star-rating {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+/* Styling for each star */
+.star {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    filter: grayscale(100%); /* Gray out stars by default */
+}
+
+/* Filled stars will have color */
+.filled-star {
+    filter: none; /* Remove grayscale to fill stars */
+}
+
+/* Flexbox container for filters */
+.filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between filter boxes */
+    justify-content: flex-start; /* Align all elements to the left */
+    padding: 10px;
+}
+
+/* Individual filter box styling */
+.filter-box-item {
+    background-color: #d7d7d7; /* Default grey background */
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Active (clicked) state for filter box */
+.filter-box-item.active {
+    background-color: #4caf50; /* Green background when active */
+    color: white; /* Change text color to white when active */
+}

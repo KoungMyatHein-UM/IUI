@@ -249,8 +249,7 @@ async function main() {
     const flattenedProperties = flattenObject(filterableProperties); // Flatten the collated properties
 
     const keys = flattenedProperties.map(item => item.split(': ')[0]); // Extract keys from "key: value" format
-    const first50Keys = keys.slice(0, keys.length);  // Get the first 50 elements
-
+    const first50Keys = keys.slice(0, 50);  // Get the first 50 elements
     displayFilterKeys(shuffleArray(first50Keys));
     console.log(flattenedProperties); // Log the flattened properties
 }
