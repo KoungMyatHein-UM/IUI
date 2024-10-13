@@ -350,6 +350,14 @@ function calculateFilterScores(allProperties, boughtProperties, likedProperties)
 }
 
 
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 
 
 /**
@@ -382,8 +390,10 @@ async function main() {
         // Extract the sorted filter keys
         const sortedFilterKeys = filterScores.map(item => item.key);
 
+        const shuffledKeys = shuffleArray(sortedFilterKeys.slice());
+
         // Display the filters
-        displayFilterKeys(sortedFilterKeys.slice(0, 50));
+        displayFilterKeys(shuffledKeys.slice(0, 50));
     } catch (error) {
         console.error('Error fetching the products:', error);
     }
