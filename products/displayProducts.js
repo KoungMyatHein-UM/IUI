@@ -41,7 +41,7 @@ function displayProductsDefault() {
  * Displays products based on their relevance to the properties of bought and liked items,
  * including penalties for unmatched properties and selected filters.
  */
-function displayProductsAI() {
+function getFilteredProducts() {
     const boughtList = getBoughtList();
     const likedList = getLikedList();
     const selectedFilters = getSelectedFilters(); // Get the selected filters
@@ -68,7 +68,7 @@ function displayProductsAI() {
     };
 
     // General penalty and filter settings
-    const penaltyValue = 3;     // Base penalty value for missing a property
+    const penaltyValue = 1;     // Base penalty value for missing a property
     const filterPenalty = 1000; // Penalty for missing selected filters
     const filterPenaltyThreshold = -500; // Minimum score threshold
 
@@ -131,9 +131,20 @@ function displayProductsAI() {
 
     console.log(filteredProductScores); // Log the sorted products and their scores
 
+    return filteredProductScores;
+}
+
+
+/**
+ * Displays products based on their relevance to the properties of bought and liked items,
+ * including penalties for unmatched properties and selected filters.
+ */
+function displayProductsAI() {
+
+
     // Display products sorted by score
     setTimeout(function() {
-        displayProductsAsync(filteredProductScores.map(ps => ps.product));
+        displayProductsAsync(getFilteredProducts().map(ps => ps.product));
     }, 300);
 }
 

@@ -1,55 +1,16 @@
-/**
- * Adjusts the counts in allProperties based on bought and liked properties and their weights.
- * @param {Object} allProperties - The collated properties from all products.
- * @param {Object} boughtProperties - The collated properties from bought items.
- * @param {Object} likedProperties - The collated properties from liked items.
- * @param {number} boughtWeight - The weight to apply to bought properties.
- * @param {number} likedWeight - The weight to apply to liked properties.
- * @returns {Object} - The adjusted properties with updated counts.
- */
-function adjustFilterablePropertiesCounts(allProperties, boughtProperties, likedProperties, boughtWeight, likedWeight) {
-    const adjustedProperties = JSON.parse(JSON.stringify(allProperties)); // Deep copy to avoid mutating original
-
-    // Function to adjust counts for a given property category
-    function adjustCountsForCategory(category) {
-        const allPropsCategory = adjustedProperties[category];
-        const boughtPropsCategory = boughtProperties[category] || {};
-        const likedPropsCategory = likedProperties[category] || {};
-
-        for (const prop in allPropsCategory) {
-            let adjustment = 0;
-
-            if (boughtPropsCategory[prop]) {
-                adjustment += boughtPropsCategory[prop] * boughtWeight;
-            }
-            if (likedPropsCategory[prop]) {
-                adjustment += likedPropsCategory[prop] * likedWeight;
-            }
-
-            // Increase the count by the adjustment
-            allPropsCategory[prop] += adjustment;
-        }
-    }
-
-    // Adjust counts for each category
-    for (const category in adjustedProperties) {
-        adjustCountsForCategory(category);
-    }
-
-    return adjustedProperties;
-}
-
-/**
- * Collates all filterable properties from the products into a single object with counts.
- * @param {Array} products - The list of products.
- * @returns {Object} - An object containing filterable properties and their counts.
- */
 function collateFilterablePropertiesWithCounts(products) {
     const filterableProperties = {};
 
     // Loop through each product and extract its filterable properties
     products.forEach(product => {
-        const props = product.filterable_properties;
+        let props = null;
+
+        try{
+            props = product.product.filterable_properties;
+        } catch (TypeError) {
+            props = product.filterable_properties;
+        }
+
 
         // Count each category, subcategory, product_type, etc.
         addToFilterableProperties(filterableProperties, 'category', props.category);
@@ -107,12 +68,6 @@ function collateFilterablePropertiesWithCounts(products) {
     return filterableProperties;
 }
 
-/**
- * Adds a property to the filterableProperties object, counting its occurrences.
- * @param {Object} filterableProperties - The object to store property counts.
- * @param {string} key - The property category (e.g., 'colors', 'materials').
- * @param {string|number} value - The value of the property to count.
- */
 function addToFilterableProperties(filterableProperties, key, value) {
     if (!filterableProperties[key]) {
         filterableProperties[key] = {}; // Initialize the category if it doesn't exist
@@ -127,57 +82,16 @@ function addToFilterableProperties(filterableProperties, key, value) {
     }
 }
 
-/**
- * Determines the price range for a given price, with increments of 200.
- * @param {number} price - The price of the product.
- * @returns {string} - The price range in which the product falls.
- */
 function getPriceRange(price) {
     const min = Math.floor(price / 200) * 200;
     const max = min + 199;
     return `$${min} - $${max}`;
 }
 
-/**
- * Determines the rating range for a given rating, with increments of 1.
- * @param {number} rating - The user rating of the product.
- * @returns {string} - The rating range in which the product falls.
- */
 function getRatingRange(rating) {
     const min = Math.floor(rating);
     const max = min + 0.99;
     return `${min} - ${max}`;
-}
-
-/**
- * Recursively flattens the object and collects all key-value pairs, sorted by value in descending order.
- * @param {Object} obj - The object to flatten.
- * @returns {Array} - Array of key-value pairs as strings, sorted by value in descending order.
- */
-function flattenObject(obj) {
-    const result = [];
-
-    // Helper function to recursively traverse the object
-    function recursiveFlatten(subObj) {
-        for (const key in subObj) {
-            if (typeof subObj[key] === 'object' && !Array.isArray(subObj[key])) {
-                // If the value is an object, recurse into it
-                recursiveFlatten(subObj[key]);
-            } else {
-                // Otherwise, add the key-value pair to the result array
-                result.push({ key: `${key}`, value: subObj[key] });
-            }
-        }
-    }
-
-    // Start the recursive flattening
-    recursiveFlatten(obj);
-
-    // Sort by the 'value' property in descending order
-    result.sort((a, b) => b.value - a.value);
-
-    // Return the array in "key: value" format as strings
-    return result.map(item => `${item.key}: ${item.value}`);
 }
 
 /**
@@ -189,10 +103,6 @@ function capitalizeWords(str) {
     return str.replace(/\b\w/g, char => char.toUpperCase());
 }
 
-/**
- * Displays the filter keys in the filters-container as individual boxes.
- * @param {Array} keys - Array of filter keys to display.
- */
 function displayFilterKeys(keys) {
     const filtersContainer = document.getElementById('filters-container');
 
@@ -243,11 +153,6 @@ function displayFilterKeys(keys) {
     });
 }
 
-/**
- * Moves the active filter box to the top of the container, below other active elements.
- * @param {HTMLElement} container - The filters container.
- * @param {HTMLElement} element - The filter box element to move to the top.
- */
 function moveActiveToTop(container, element) {
     // Move active filter to the top (before the first non-active filter)
     const activeElements = Array.from(container.children).filter(child => child.classList.contains('active'));
@@ -260,13 +165,6 @@ function moveActiveToTop(container, element) {
     }
 }
 
-
-/**
- * Restores the filter box to its original position based on the originalOrder array.
- * @param {HTMLElement} container - The filters container.
- * @param {HTMLElement} element - The filter box element to restore.
- * @param {Array} originalOrder - The array containing the original positions of all filter elements.
- */
 function restoreOriginalPosition(container, element, originalOrder) {
     const original = originalOrder.find(item => item.element === element);
     if (original) {
@@ -280,21 +178,12 @@ function restoreOriginalPosition(container, element, originalOrder) {
     }
 }
 
-
-
-/**
- * Calculates scores for each filter based on counts from all, bought, and liked products.
- * @param {Object} allProperties - Collated properties from all products.
- * @param {Object} boughtProperties - Collated properties from bought products.
- * @param {Object} likedProperties - Collated properties from liked products.
- * @returns {Array} - Array of filters with their calculated scores, sorted in descending order.
- */
 function calculateFilterScores(allProperties, boughtProperties, likedProperties) {
     const filterScores = [];
 
     // Define weighting factors
-    const boughtWeight = 20; // Higher influence
-    const likedWeight = 1;  // Lower influence
+    const boughtWeight = 2000; // Higher influence
+    const likedWeight = 1000;  // Lower influence
 
     // Collect all unique filters across all categories
     const allFilters = {};
@@ -350,16 +239,108 @@ function calculateFilterScores(allProperties, boughtProperties, likedProperties)
 }
 
 
+async function getFilteredProducts() {
+    const response = await fetch('products.json');
+    const data = await response.json();
+
+    const products = data.products
+
+    const boughtList = getBoughtList();
+    const likedList = getLikedList();
+    const selectedFilters = getSelectedFilters(); // Get the selected filters
+
+    const boughtItems = products.filter(product => boughtList.includes(product.product_id)); // Find bought products
+    const likedItems = products.filter(product => likedList.includes(product.product_id));   // Find liked products
+
+    // Collate properties from bought and liked items
+    const boughtProperties = collateFilterablePropertiesWithCounts(boughtItems);
+    const likedProperties = collateFilterablePropertiesWithCounts(likedItems);
+
+    // Define individual weighting factors for each property
+    const propertyWeights = {
+        'category': {boughtWeight: 5, likedWeight: 2, penaltyWeight: 1},
+        'subcategory': {boughtWeight: 3, likedWeight: 1, penaltyWeight: 1},
+        'product_type': {boughtWeight: 2, likedWeight: 1, penaltyWeight: 1},
+        'colors': {boughtWeight: 2, likedWeight: 1, penaltyWeight: 1},
+        'materials': {boughtWeight: 2, likedWeight: 1, penaltyWeight: 1},
+        'styles': {boughtWeight: 2, likedWeight: 1, penaltyWeight: 1},
+        'features': {boughtWeight: 2, likedWeight: 1, penaltyWeight: 1},
+        'brand': {boughtWeight: 2, likedWeight: 1.5, penaltyWeight: 1},
+        'user_rating': {boughtWeight: 2, likedWeight: 1, penaltyWeight: 1},
+        'price': {boughtWeight: 2, likedWeight: 1, penaltyWeight: 1}
+    };
+
+    // General penalty and filter settings
+    const penaltyValue = 1;     // Base penalty value for missing a property
+    const filterPenalty = 1000; // Penalty for missing selected filters
+    const filterPenaltyThreshold = -500; // Minimum score threshold
+
+    // Create an array to store scores for each product
+    const productScores = products.map(product => {
+        let score = 0;
+
+        // Get the product's filterable properties
+        const productProps = product.filterable_properties;
+
+        // List of property keys to check (simple properties)
+        const propertyKeys = ['category', 'subcategory', 'product_type'];
+
+        // Check simple properties with individual weights
+        propertyKeys.forEach(key => {
+            const weights = propertyWeights[key];
+            score += weights.boughtWeight * checkAndScoreProperty(productProps[key], boughtProperties);
+            score += weights.likedWeight * checkAndScoreProperty(productProps[key], likedProperties);
+            score += weights.penaltyWeight * applyPenalty(productProps[key], boughtProperties, likedProperties, penaltyValue);
+        });
+
+        // Check array properties like colors, materials, styles, features, brand
+        const arrayPropertyKeys = ['colors', 'materials', 'styles', 'features', 'brand'];
+        arrayPropertyKeys.forEach(key => {
+            const weights = propertyWeights[key];
+            if (Array.isArray(productProps[key])) {
+                productProps[key].forEach(value => {
+                    score += weights.boughtWeight * checkAndScoreProperty(value, boughtProperties);
+                    score += weights.likedWeight * checkAndScoreProperty(value, likedProperties);
+                    score += weights.penaltyWeight * applyPenalty(value, boughtProperties, likedProperties, penaltyValue);
+                });
+            }
+        });
+
+        // Check numerical properties like user_rating and price ranges
+        ['user_rating', 'price'].forEach(key => {
+            const weights = propertyWeights[key];
+            let valueRange;
+            if (key === 'user_rating') {
+                valueRange = getRatingRange(productProps[key]);
+            } else {
+                valueRange = getPriceRange(productProps[key]);
+            }
+            score += weights.boughtWeight * checkAndScoreProperty(valueRange, boughtProperties);
+            score += weights.likedWeight * checkAndScoreProperty(valueRange, likedProperties);
+            score += weights.penaltyWeight * applyPenalty(valueRange, boughtProperties, likedProperties, penaltyValue);
+        });
+
+        // Apply penalties for missing selected filters
+        score += applyFilterPenalties(product, selectedFilters, filterPenalty);
+
+        return {product, score}; // Return the product along with its score
+    });
+
+    // Filter out products with score less than the threshold
+    const filteredProductScores = productScores.filter(ps => ps.score >= filterPenaltyThreshold);
+
+    // Sort products by score in descending order (most relevant first)
+    filteredProductScores.sort((a, b) => b.score - a.score);
 
 
-/**
- * Main function to fetch products and display filters based on calculated scores.
- */
+    return filteredProductScores;
+}
+
+
+
 async function main() {
     try {
-        const response = await fetch('products.json'); // Fetch the products from the JSON file
-        const data = await response.json();
-        const products = data.products;
+        const products = await getFilteredProducts();
 
         // Get bought and liked products
         const boughtList = getBoughtList();
@@ -372,6 +353,9 @@ async function main() {
         const allProperties = collateFilterablePropertiesWithCounts(products);
         const boughtProperties = collateFilterablePropertiesWithCounts(boughtItems);
         const likedProperties = collateFilterablePropertiesWithCounts(likedItems);
+
+        console.log(boughtList)
+        console.log(boughtItems)
 
         // Calculate scores for filters
         const filterScores = calculateFilterScores(allProperties, boughtProperties, likedProperties);
