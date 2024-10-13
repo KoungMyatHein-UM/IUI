@@ -275,7 +275,7 @@ function displayProductsSearch(searchString) {
 
     // Display the sorted products
     setTimeout(function() {
-        displayProductsAsync(products);
+        displayProductsAsync(sortedProducts);
     }, 300);
 }
 
